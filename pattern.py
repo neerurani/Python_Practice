@@ -52,3 +52,4 @@ def digitPattern1(noOfRow):
         print()
 
 digitPattern1(5)
+
