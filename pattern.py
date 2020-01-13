@@ -21,6 +21,7 @@ def piramidPattern(noOfRow,char):
 nor=input("Enter the no. of rows: ")
 #piramidPattern(nor,"*")
 
+
 ''' Program to print 
 *
 **
@@ -37,6 +38,7 @@ def ladderPattern(noOfRow,char):
 
 #ladderPattern(nor,"#")
 
+
 '''  Program to print
 1
 12
@@ -51,5 +53,21 @@ def digitPattern1(noOfRow):
             print(j,end=" ")
         print()
 
-digitPattern1(5)
+#digitPattern1(nor)
 
+
+'''  Program to print
+1
+22
+333
+4444
+55555
+   pattern  '''
+def digitPattern2(noOfRow):
+    n=int(noOfRow)
+    for i in range(1,n+1):
+        for j in range(1,i+1):
+            print(i,end=" ")
+        print()
+
+digitPattern2(nor)
