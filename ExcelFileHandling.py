@@ -44,18 +44,24 @@ for i in range(0,nor):
 readExcel(path)'''
 
 #................... Method to update data in excel file....................
-def updateExcel(existVal,newVal,fpath):
+def updateExcel(uniqueColVal,colNameToUpdate,newVal,fpath):
+    #uniqueColVal  -->  Unique value to match (of which row's column's value want to change)
+    #colNameToUpdate --> column name (of which particular column's value want to change)
     st_obj, w_obj = openExcel(fpath)
     for i in range(1, st_obj.max_row+1):
         for j in range(1, st_obj.max_column + 1):
             cell_obj = st_obj.cell(row=i, column=j)
-            if cell_obj.value == existVal:
-                cell_obj.value = newVal
+            if cell_obj.value == uniqueColVal:
+                for col in range(1, st_obj.max_column + 1):
+                    c1 = st_obj.cell(row=1, column=col)
+                    if (colNameToUpdate == c1.value):
+                        changeing_pos = st_obj.cell(row=i, column=col)
+                        changeing_pos.value=newVal
     w_obj.save(fpath)
 
-'''path = "C:\\neeru\\Python_Practice\\ItemDetails.xlsx"
-updateExcel("aa","hd",path)
-readExcel(path)'''
+path = "C:\\neeru\\Python_Practice\\ItemDetails.xlsx"
+updateExcel("ff","DateOfMfd",100,path)
+readExcel(path)
 
 #................... Method to delete data from excel file....................
 def deleteFromExcel():
@@ -72,6 +78,18 @@ def deleteFromExcel():
 
     print
     "Delete Row Successfully."
+
+'''path = "C:\\neeru\\Python_Practice\\ItemDetails.xlsx"
+st_obj, w_obj = openExcel(path)
+#range(a6).EntireColumn.Delete
+#readExcel(path)
+for sheet in w_obj.sheets():
+    for row in range(sheet.nrows):
+        for column in range(sheet.ncols):
+            print ("row::::: ", row)
+            print ("column:: ", column)
+            print ("value::: ", sheet.cell(row,column).value)
+            '''
 
 
 
